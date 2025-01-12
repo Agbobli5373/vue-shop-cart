@@ -46,7 +46,7 @@ const formatCurrency = (value) => {
                   @change="updateQuantity(item.id, item.quantity)"
                   class="quantity-dropdown"
                 >
-                  <option v-for="n in 10" :key="n" :value="n">Qty: {{ n }}</option>
+                  <option v-for="n in parseInt(item.qty)" :key="n" :value="n">Qty: {{ n }}</option>
                 </select>
                 <button @click="removeItem(item.id)" class="delete-btn">Delete</button>
               </div>

@@ -9,22 +9,28 @@ const products = ref([
     name: 'Nike Air Max 270',
     price: 100,
     rating: 4,
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff'
+    reviews:234,
+    qty:10,
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff',
   },
   {
     id: 2,
     name: 'Adidas Superstar',
     price: 150,
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1512374382149-233c42b6a83b'
+    reviews:24,
+    qty:46,
+    image: 'https://images.unsplash.com/photo-1512374382149-233c42b6a83b',
   },
   {
     id: 3,
     name: 'Air Jordan 1',
     price: 200,
     rating: 4,
-    image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86'
-  }
+    reviews:989,
+    qty:20,
+    image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86',
+  },
 ])
 
 const addToCart = (product) => {
@@ -48,15 +54,13 @@ const getStars = (rating) => {
           <h3 class="product-title">{{ product.name }}</h3>
           <div class="rating">
             <span class="stars" v-html="getStars(product.rating)"></span>
-            <span class="reviews">(123)</span>
+            <span class="reviews">{{ product.reviews }}</span>
           </div>
           <div class="price">
             <span class="currency">GHC</span>
             <span class="amount">{{ product.price.toFixed(2) }}</span>
           </div>
-          <button class="add-to-cart-btn" @click="addToCart(product)">
-            Add to Cart
-          </button>
+          <button class="add-to-cart-btn" @click="addToCart(product)">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -114,7 +118,7 @@ const getStars = (rating) => {
 
 .product-title {
   font-size: 16px;
-  color: #0F1111;
+  color: #0f1111;
   margin-bottom: 8px;
   line-height: 1.4;
   height: 2.8em;
@@ -126,7 +130,7 @@ const getStars = (rating) => {
 }
 
 .stars {
-  color: #FFA41C;
+  color: #ffa41c;
   letter-spacing: 2px;
 }
 
@@ -150,14 +154,14 @@ const getStars = (rating) => {
 .amount {
   font-size: 21px;
   font-weight: 500;
-  color: #0F1111;
+  color: #0f1111;
 }
 
 .add-to-cart-btn {
   width: 100%;
   padding: 8px 0;
-  background: #FFD814;
-  border: 1px solid #FCD200;
+  background: #ffd814;
+  border: 1px solid #fcd200;
   border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
@@ -165,7 +169,7 @@ const getStars = (rating) => {
 }
 
 .add-to-cart-btn:hover {
-  background: #F7CA00;
+  background: #f7ca00;
 }
 
 .product-details {
@@ -178,11 +182,11 @@ const getStars = (rating) => {
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
-  
+
   .product-title {
     font-size: 14px;
   }
-  
+
   .amount {
     font-size: 18px;
   }
