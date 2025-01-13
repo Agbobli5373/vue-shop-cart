@@ -42,12 +42,13 @@ const removeItem = (id) => {
   emit('remove-item', id)
 }
 /**
- * Fetches data from the provided API endpoint.
+ * Updates the quantity of a product in the cart.
  *
- * @param {string} url - The URL of the API endpoint to fetch data from.
- * @returns {Promise<Object>} - A promise that resolves to the data fetched from the API.
- * @throws {Error} - Throws an error if the fetch operation fails.
+ * @param {number} id - The unique identifier of the product.
+ * @param {number} quantity - The new quantity of the product.
+ * @emits update-quantity - Emits an event to update the quantity of the product in the cart.
  */
+
 const updateQuantity = (id, quantity) => {
   emit('update-quantity', id, quantity)
 }
