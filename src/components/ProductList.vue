@@ -1,8 +1,25 @@
 <script setup>
 import { ref } from 'vue'
 
+/**
+ * Emits an event when a product is added to the cart.
+ *
+ * @event add-to-cart
+ */
 const emit = defineEmits(['add-to-cart'])
 
+/**
+ * A reactive reference to an array of product objects.
+ * Each product object contains the following properties:
+ *
+ * @property {number} id - The unique identifier for the product.
+ * @property {string} name - The name of the product.
+ * @property {number} price - The price of the product.
+ * @property {number} rating - The rating of the product (out of 5).
+ * @property {number} reviews - The number of reviews for the product.
+ * @property {number} qty - The quantity of the product available in stock.
+ * @property {string} image - The URL of the product image.
+ */
 const products = ref([
   {
     id: 1,
@@ -33,10 +50,22 @@ const products = ref([
   },
 ])
 
+/**
+ * Adds the specified product to the cart by emitting an 'add-to-cart' event.
+ *
+ * @param {Object} product - The product to be added to the cart.
+ */
+
 const addToCart = (product) => {
   emit('add-to-cart', product)
 }
 
+/**
+ * Generates a string representation of the star rating.
+ *
+ * @param {number} rating - The rating value (from 0 to 5).
+ * @returns {string} A string of stars (★) and empty stars (☆) representing the rating.
+ */
 const getStars = (rating) => {
   return '★'.repeat(rating) + '☆'.repeat(5 - rating)
 }

@@ -1,8 +1,17 @@
+
 <script setup>
 import ProductList from './components/ProductList.vue'
 import ProductCart from './components/ProductCart.vue'
 import { useCart } from './composables/useCart'
 
+/**
+ * Destructures the following methods and properties from the useCart composable:
+ *
+ * - `cartItems`: An array containing the items currently in the cart.
+ * - `addToCart`: A function to add an item to the cart.
+ * - `removeFromCart`: A function to remove an item from the cart.
+ * - `updateQuantity`: A function to update the quantity of an item in the cart.
+ */
 const { cartItems, addToCart, removeFromCart, updateQuantity } = useCart()
 </script>
 

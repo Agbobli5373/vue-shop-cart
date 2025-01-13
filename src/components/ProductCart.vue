@@ -1,6 +1,11 @@
 <script setup>
 import { computed } from 'vue'
 
+/**
+ * Props for the ProductCart component.
+ *
+ * @property {Array} cartItems - An array of items in the cart. This prop is required.
+ */
 const props = defineProps({
   cartItems: {
     type: Array,
@@ -8,20 +13,51 @@ const props = defineProps({
   },
 })
 
+/**
+ * Emits custom events for removing an item from the cart and updating the quantity of an item.
+ *
+ * @event remove-item - Emitted when an item is removed from the cart.
+ * @event update-quantity - Emitted when the quantity of an item in the cart is updated.
+ */
 const emit = defineEmits(['remove-item', 'update-quantity'])
 
+/**
+ * Computes the total price of all items in the cart.
+ *
+ * This computed property iterates over the `cartItems` prop and calculates
+ * the sum of the price multiplied by the quantity for each item.
+ *
+ * @returns {number} The total price of all items in the cart.
+ */
 const total = computed(() => {
   return props.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
 })
 
+/**
+ * Emits an event to remove an item from the cart.
+ *
+ * @param {string|number} id - The unique identifier of the item to be removed.
+ */
 const removeItem = (id) => {
   emit('remove-item', id)
 }
-
+/**
+ * Fetches data from the provided API endpoint.
+ *
+ * @param {string} url - The URL of the API endpoint to fetch data from.
+ * @returns {Promise<Object>} - A promise that resolves to the data fetched from the API.
+ * @throws {Error} - Throws an error if the fetch operation fails.
+ */
 const updateQuantity = (id, quantity) => {
   emit('update-quantity', id, quantity)
 }
 
+/**
+ * Formats a given number as a currency string in Ghanaian Cedi (GHC).
+ *
+ * @param {number} value - The numeric value to be formatted.
+ * @returns {string} The formatted currency string in the format "GHCxx.xx".
+ */
 const formatCurrency = (value) => {
   return `GHC${value.toFixed(2)}`
 }
